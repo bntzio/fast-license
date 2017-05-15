@@ -6,6 +6,11 @@ const chalk = require('chalk');
 const clear = require('clear');
 const emoji = require('node-emoji');
 const figlet = require('figlet');
+const touch = require('touch');
+const fs = require('fs');
+
+// paths to licenses
+const mitPath = require.resolve('./licenses/mit');
 
 // chalk theme
 const normal = chalk.blue;
@@ -15,8 +20,8 @@ const error = chalk.bold.red;
 
 // emojis
 const smile = emoji.get('smile');
-const smiley = emoji.get('smiley');
 const wave = emoji.get('wave');
+const tada = emoji.get('tada');
 
 // ascii
 const ascii = function(name) {
@@ -50,11 +55,63 @@ const readyQuestions = [
     message: 'Are you ready?'
   }
 ];
+const choices = [
+  {
+    type: 'list',
+    name: 'choice_list',
+    message: 'Which license do you need?',
+    choices: [
+      'MIT',
+      'Fucking Up',
+      'Other'
+    ]
+  }
+];
+
+// license generator
+const generator = function(name, choice) {
+  const choicePath = chooseChoicePath(choice);
+  touch('license');
+  fs.readFile(`${choicePath}`, 'utf8', function(err, data) {
+    if (err) {
+      return console.log(error(err));
+    }
+    const today = new Date();
+    const year = today.getFullYear();
+    const text = `Copyright ${year} ${name}`;
+    const result = data.replace(/Copyright/g, text);
+
+    fs.writeFile('license', result, 'utf8', function(err) {
+      if (err) return console.log(error(err));
+      goodbye();
+    });
+  });
+};
+
+// choose choice path
+const chooseChoicePath = function(choice) {
+  switch (choice) {
+    case 'MIT':
+      return mitPath;
+      break;
+    default:
+      return;
+  };
+};
+
+// exit message
+const goodbye = function() {
+  console.log('');
+  console.log(success(`Successfully created license! ${tada}`));
+  process.exit(0);
+};
 
 // inquirer prompts
 const mainPrompt = function() {
   return inquirer.prompt(mainQuestions).then(function(answers) {
-    console.log(chalk.blue(`Hello, ${answers.first_name} ${answers.last_name}!`));
+    const { first_name, last_name } = answers;
+    const fullName = `${first_name} ${last_name}`;
+    listPrompt(fullName);
   });
 };
 const readyPrompt = function() {
@@ -66,6 +123,11 @@ const readyPrompt = function() {
       console.log(normal(`Ok! See you later! ${wave}`));
       process.exit(0);
     }
+  });
+};
+const listPrompt = function(fullName) {
+  return inquirer.prompt(choices).then(function(answer) {
+    generator(fullName, answer.choice_list);
   });
 };
 

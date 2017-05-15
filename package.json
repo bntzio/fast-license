@@ -23,6 +23,7 @@
     "clear": "0.0.1",
     "figlet": "^1.2.0",
     "inquirer": "^3.0.6",
-    "node-emoji": "^1.5.1"
+    "node-emoji": "^1.5.1",
+    "touch": "^1.0.0"
   }
 }
