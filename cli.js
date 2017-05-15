@@ -11,6 +11,7 @@ const fs = require('fs');
 
 // paths to licenses
 const mitPath = require.resolve('./licenses/mit');
+const apache2Path = require.resolve('./licenses/apache-2.0');
 
 // chalk theme
 const normal = chalk.blue;
@@ -62,8 +63,7 @@ const choices = [
     message: 'Which license do you need?',
     choices: [
       'MIT',
-      'Fucking Up',
-      'Other'
+      'Apache 2.0'
     ]
   }
 ];
@@ -94,6 +94,8 @@ const chooseChoicePath = function(choice) {
     case 'MIT':
       return mitPath;
       break;
+    case 'Apache 2.0':
+      return apache2Path;
     default:
       return;
   };
