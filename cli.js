@@ -12,6 +12,7 @@ const fs = require('fs');
 // paths to licenses
 const mitPath = require.resolve('./licenses/mit');
 const apache2Path = require.resolve('./licenses/apache-2.0');
+const bsd3Path = require.resolve('./licenses/bsd-3-clause');
 
 // chalk theme
 const normal = chalk.blue;
@@ -63,7 +64,8 @@ const choices = [
     message: 'Which license do you need?',
     choices: [
       'MIT',
-      'Apache 2.0'
+      'Apache 2.0',
+      'BSD 3-Clause'
     ]
   }
 ];
@@ -96,6 +98,8 @@ const chooseChoicePath = function(choice) {
       break;
     case 'Apache 2.0':
       return apache2Path;
+    case 'BSD 3-Clause':
+      return bsd3Path;
     default:
       return;
   };
