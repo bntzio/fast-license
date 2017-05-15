@@ -7,7 +7,7 @@
 Fast License is the fastest way to generate a license for your open source projects.
 
 ## Requirements
-* Node version >=6
+* Node version >=5
 
 ## Install
 ```

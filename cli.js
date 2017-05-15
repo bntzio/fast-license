@@ -154,8 +154,9 @@ const goodbye = function() {
 // inquirer prompts
 const mainPrompt = function() {
   return inquirer.prompt(mainQuestions).then(function(answers) {
-    const { first_name, last_name } = answers;
-    const fullName = `${first_name} ${last_name}`;
+    const firstName = answers.first_name;
+    const lastName = answers.last_name;
+    const fullName = `${firstName} ${lastName}`;
     listPrompt(fullName);
   });
 };

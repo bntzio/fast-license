@@ -12,6 +12,9 @@
   "bin": {
     "fast-license": "cli.js"
   },
+  "engines": {
+    "node": ">=5"
+  },
   "keywords": [
     "fast",
     "license",
