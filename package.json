@@ -1,0 +1,21 @@
+{
+  "name": "fast-license",
+  "version": "0.1.0",
+  "description": "Generate licenses for your open source projects the fast way",
+  "repository": "https://github.com/bntzio/fast-license.git",
+  "author": "Enrique Benitez <hello@bntz.io> (https://bntz.io)",
+  "license": "MIT",
+  "homepage": "https://github.com/bntzio/fast-license#readme",
+  "bugs": {
+    "url": "https://github.com/bntzio/fast-license/issues"
+  },
+  "bin": {
+    "fast-license": "cli.js"
+  },
+  "keywords": [
+    "fast",
+    "license",
+    "fast-license",
+    "generate license"
+  ]
+}
