@@ -14,6 +14,7 @@ const mitPath = require.resolve('./licenses/mit');
 const apache2Path = require.resolve('./licenses/apache-2.0');
 const bsd3Path = require.resolve('./licenses/bsd-3-clause');
 const bsd2Path = require.resolve('./licenses/bsd-2-clause');
+const gpl3Path = require.resolve('./licenses/gpl-3.0');
 
 // chalk theme
 const normal = chalk.blue;
@@ -67,7 +68,8 @@ const choices = [
       'MIT',
       'Apache 2.0',
       'BSD 3-Clause',
-      'BSD 2-Clause'
+      'BSD 2-Clause',
+      'GNU GPL 3.0'
     ]
   }
 ];
@@ -80,15 +82,36 @@ const generator = function(name, choice) {
     if (err) {
       return console.log(error(err));
     }
-    const today = new Date();
-    const year = today.getFullYear();
-    const text = `Copyright ${year} ${name}`;
-    const result = data.replace(/Copyright/g, text);
 
-    fs.writeFile('license', result, 'utf8', function(err) {
-      if (err) return console.log(error(err));
-      goodbye();
+    var foundStd;
+    const stdLicenses = [
+      'GNU GPL 3.0'
+    ];
+
+    stdLicenses.forEach(function(license) {
+      if (choice === license) {
+        foundStd = true;
+      } else {
+        foundStd = false;
+      }
     });
+
+    if (!foundStd) {
+      const today = new Date();
+      const year = today.getFullYear();
+      const text = `Copyright ${year} ${name}`;
+      const result = data.replace(/Copyright/g, text);
+
+      fs.writeFile('license', result , 'utf8', function(err) {
+        if (err) return console.log(error(err));
+        goodbye();
+      });
+    } else {
+      fs.writeFile('license', data , 'utf8', function(err) {
+        if (err) return console.log(error(err));
+        goodbye();
+      });
+    }
   });
 };
 
@@ -104,6 +127,8 @@ const chooseChoicePath = function(choice) {
       return bsd3Path;
     case 'BSD 2-Clause':
       return bsd2Path;
+    case 'GNU GPL 3.0':
+      return gpl3Path;
     default:
       return;
   };
