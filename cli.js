@@ -13,6 +13,7 @@ const fs = require('fs');
 const mitPath = require.resolve('./licenses/mit');
 const apache2Path = require.resolve('./licenses/apache-2.0');
 const bsd3Path = require.resolve('./licenses/bsd-3-clause');
+const bsd2Path = require.resolve('./licenses/bsd-2-clause');
 
 // chalk theme
 const normal = chalk.blue;
@@ -65,7 +66,8 @@ const choices = [
     choices: [
       'MIT',
       'Apache 2.0',
-      'BSD 3-Clause'
+      'BSD 3-Clause',
+      'BSD 2-Clause'
     ]
   }
 ];
@@ -100,6 +102,8 @@ const chooseChoicePath = function(choice) {
       return apache2Path;
     case 'BSD 3-Clause':
       return bsd3Path;
+    case 'BSD 2-Clause':
+      return bsd2Path;
     default:
       return;
   };
