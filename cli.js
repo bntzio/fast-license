@@ -16,6 +16,7 @@ const bsd3Path = require.resolve('./licenses/bsd-3-clause');
 const bsd2Path = require.resolve('./licenses/bsd-2-clause');
 const gpl3Path = require.resolve('./licenses/gpl-3.0');
 const lgpl3Path = require.resolve('./licenses/lgpl-3.0');
+const mpl2Path = require.resolve('./licenses/mpl-2.0');
 
 // chalk theme
 const normal = chalk.blue;
@@ -71,7 +72,8 @@ const choices = [
       'BSD 3-Clause',
       'BSD 2-Clause',
       'GNU GPL 3.0',
-      'GNU LGPL 3.0'
+      'GNU LGPL 3.0',
+      'Mozilla Public License 2.0'
     ]
   }
 ];
@@ -88,7 +90,8 @@ const generator = function(name, choice) {
     var foundStd;
     const stdLicenses = [
       'GNU GPL 3.0',
-      'GNU LGPL 3.0'
+      'GNU LGPL 3.0',
+      'Mozilla Public License 2.0'
     ];
 
     stdLicenses.forEach(function(license) {
@@ -134,6 +137,8 @@ const chooseChoicePath = function(choice) {
       return gpl3Path;
     case 'GNU LGPL 3.0':
       return lgpl3Path;
+    case 'Mozilla Public License 2.0':
+      return mpl2Path;
     default:
       return;
   };
