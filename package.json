@@ -1,6 +1,6 @@
 {
   "name": "fast-license",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Generate licenses for your open source projects the fast way",
   "repository": "https://github.com/bntzio/fast-license.git",
   "author": "Enrique Benitez <hello@bntz.io> (https://bntz.io)",
