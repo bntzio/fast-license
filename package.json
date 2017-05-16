@@ -9,6 +9,9 @@
   "bugs": {
     "url": "https://github.com/bntzio/fast-license/issues"
   },
+  "scripts": {
+    "test": "ava"
+  },
   "bin": {
     "fast-license": "cli.js"
   },
@@ -28,5 +31,8 @@
     "inquirer": "^3.0.6",
     "node-emoji": "^1.5.1",
     "touch": "^1.0.0"
+  },
+  "devDependencies": {
+    "ava": "^0.19.1"
   }
 }
