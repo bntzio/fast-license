@@ -1,4 +1,5 @@
-# Fast License
+# Fast License [![Build Status](https://travis-ci.org/bntzio/fast-license.svg?branch=master)](https://travis-ci.org/bntzio/fast-license)
+
 > Generate licenses for your open source projects the fast way ⏩
 
 <img src="fast-license.gif" width="688">
